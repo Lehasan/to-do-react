@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+	color: inherit;
+}
+
+img {
+	vertical-align: top;
+}
+
+ul {
+	list-style: none;
+}
+
+input,
+textarea {
+	width: 100%;
+	outline: none;
+}
+
+cite {
+	font-style: normal;
+}
+
+img,
+svg {
+	max-width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	background-color: transparent;
+	cursor: pointer;
+}
+
+html,
+body {
+	scrollbar-gutter: stable;
+
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}

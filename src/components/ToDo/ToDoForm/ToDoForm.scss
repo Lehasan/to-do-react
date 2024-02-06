@@ -1,0 +1,34 @@
+.to-do-form {
+	display: flex;
+	gap: 10px;
+
+	&__input {
+		font-size: 14px;
+		padding: 10px 5px;
+		background-color: transparent;
+		border-bottom: 1px solid;
+		transition: padding-left 0.3s;
+
+		&:focus {
+			padding-left: 15px;
+		}
+	}
+
+	&__add-button {
+		flex: 0 0 auto;
+
+		@media (any-hover: hover) {
+			transition: transform 0.2s;
+
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	&__add-icon {
+		width: 30px;
+		height: 30px;
+		color: #ee9ca7;
+	}
+}

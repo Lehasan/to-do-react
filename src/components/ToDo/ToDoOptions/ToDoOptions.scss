@@ -1,0 +1,52 @@
+.to-do-options {
+	position: relative;
+
+	&:hover {
+		.to-do-options__list {
+			transform: scale(1);
+		}
+	}
+
+	&__dots-icon {
+		width: 23px;
+		height: 23px;
+	}
+
+	&__list {
+		overflow: hidden;
+		position: absolute;
+		top: 0px;
+		right: 25px;
+		width: max-content;
+		border: 1px solid;
+		border-radius: 8px;
+		transform-origin: top right;
+		transform: scale(0);
+		background-color: #10101d;
+		transition: transform 0.4s;
+	}
+
+	&__button {
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+		text-align: left;
+		width: 100%;
+		padding: 8px;
+		gap: 5px;
+
+		@media (any-hover: hover) {
+			transition: all 0.2s;
+
+			&:hover {
+				background-color: #ee9ca7;
+				color: #000;
+			}
+		}
+	}
+
+	&__icon {
+		width: 18px;
+		height: 18px;
+	}
+}

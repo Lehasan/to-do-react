@@ -1,0 +1,80 @@
+.tasks-list {
+	overflow-y: auto;
+	max-height: 300px;
+	scrollbar-gutter: stable;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px;
+		border-radius: 4px;
+		background-color: #191933;
+		gap: 15px;
+
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+
+	&__checkbox {
+		width: 16px;
+		height: 16px;
+		border: 1px solid;
+		border-radius: 50%;
+	}
+
+	&__task-button {
+		display: inline-flex;
+		font-size: 14px;
+		text-align: left;
+		word-break: break-all;
+		gap: 8px;
+		transition: color 0.2s;
+
+		&::before {
+			content: "";
+			flex: 0 0 auto;
+			width: 16px;
+			height: 16px;
+			border: 1px solid;
+			border-radius: 50%;
+			background-color: transparent;
+			transition: all 0.2s;
+		}
+
+		&.tasks-list__task-button_active {
+			text-decoration: line-through #fff;
+			color: rgb(175, 175, 175);
+
+			&::before {
+				background-color: #ee9ca7;
+			}
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					box-shadow: 0 0 0 1px #fff;
+				}
+			}
+		}
+	}
+
+	&__trash-icon {
+		color: #ff3d46;
+
+		@media (any-hover: hover) {
+			transition: transform 0.2s;
+
+			&:hover {
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	&__message {
+		font-size: 14px;
+		color: rgb(175, 175, 175);
+	}
+}
