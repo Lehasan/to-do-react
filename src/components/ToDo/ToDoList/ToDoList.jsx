@@ -8,7 +8,7 @@ const ToDoList = ({ tasksStorage }) => {
 		const tasksArray = []
 
 		tasksStorage.item.find(item => {
-			if (item.text === event.currentTarget.textContent) {
+			if (item.id === event.currentTarget.dataset.taskId) {
 				item.status = item.status === 'completed' ? 'pending' : 'completed'
 
 				tasksArray.push(...tasksStorage.item)
@@ -32,6 +32,7 @@ const ToDoList = ({ tasksStorage }) => {
 							<button
 								type="button"
 								className={classNames('tasks-list__task-button', taskItem.status === 'completed' && 'tasks-list__task-button_active')}
+								data-task-id={taskItem.id}
 								onClick={handleActiveTask}
 							>
 								{taskItem.text}
