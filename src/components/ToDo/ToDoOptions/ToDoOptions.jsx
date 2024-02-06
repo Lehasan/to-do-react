@@ -17,18 +17,18 @@ const ToDoOptions = ({ tasksStorage }) => {
 
 	return (
 		<div className="to-do-options">
-			<button className="to-do-options__dots-button">
+			<button type="button" className="to-do-options__dots-button">
 				<TbGridDots className="to-do-options__dots-icon" />
 			</button>
 			<ul className="to-do-options__list">
 				<li className="to-do-options__item">
-					<button className="to-do-options__button" onClick={handleRemoveTasks}>
+					<button type="button" className="to-do-options__button" onClick={handleRemoveTasks}>
 						<MdDeleteSweep className="to-do-options__icon" />
 						<span>Remove all tasks</span>
 					</button>
 				</li>
 				<li className="to-do-options__item">
-					<button className="to-do-options__button" onClick={handleRemoveCompletedTasks}>
+					<button type="button" className="to-do-options__button" onClick={handleRemoveCompletedTasks}>
 						<MdDownloadDone className="to-do-options__icon" />
 						<span>Remove completed tasks</span>
 					</button>
