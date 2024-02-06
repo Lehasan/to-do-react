@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { TbGridDots } from "react-icons/tb"
 import { MdDeleteSweep } from "react-icons/md"
 import { MdDownloadDone } from "react-icons/md"
@@ -35,6 +36,10 @@ const ToDoOptions = ({ tasksStorage }) => {
 			</ul>
 		</div>
 	)
+}
+
+ToDoOptions.propTypes = {
+	tasksStorage: PropTypes.object
 }
 
 export default ToDoOptions

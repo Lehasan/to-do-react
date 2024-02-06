@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { classNames } from '@/utils/classNames'
 import { FaRegTrashCan } from "react-icons/fa6"
 import './ToDoList.scss'
@@ -49,6 +50,10 @@ const ToDoList = ({ tasksStorage }) => {
 			}
 		</>
 	)
+}
+
+ToDoList.propTypes = {
+	tasksStorage: PropTypes.object
 }
 
 export default ToDoList

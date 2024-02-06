@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useInput } from '@/hooks/useInput'
 import { generateValue } from '@/utils/generateValue'
 import { BsPlusCircleFill } from "react-icons/bs"
@@ -25,6 +26,10 @@ const ToDoForm = ({ tasksStorage }) => {
 			</button>
 		</form>
 	)
+}
+
+ToDoForm.propTypes = {
+	tasksStorage: PropTypes.object
 }
 
 export default ToDoForm
