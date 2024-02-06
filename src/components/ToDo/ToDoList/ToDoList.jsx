@@ -4,7 +4,7 @@ import { FaRegTrashCan } from "react-icons/fa6"
 import './ToDoList.scss'
 
 const ToDoList = ({ tasksStorage }) => {
-	const handleActiveTaskClick = event => {
+	const handleActiveTask = event => {
 		const tasksArray = []
 
 		tasksStorage.item.find(item => {
@@ -32,7 +32,7 @@ const ToDoList = ({ tasksStorage }) => {
 							<button
 								type="button"
 								className={classNames('tasks-list__task-button', taskItem.status === 'completed' && 'tasks-list__task-button_active')}
-								onClick={handleActiveTaskClick}
+								onClick={handleActiveTask}
 							>
 								{taskItem.text}
 							</button>
