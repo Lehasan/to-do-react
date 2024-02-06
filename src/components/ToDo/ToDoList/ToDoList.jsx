@@ -27,8 +27,8 @@ const ToDoList = ({ tasksStorage }) => {
 		<>
 			{tasksStorage.item.length ?
 				<ul className="tasks-list">
-					{tasksStorage.item.map((taskItem, taskIndex) => (
-						<li key={taskIndex} className="tasks-list__item">
+					{tasksStorage.item.map(taskItem => (
+						<li key={taskItem.id} className="tasks-list__item">
 							<button
 								type="button"
 								className={classNames('tasks-list__task-button', taskItem.status === 'completed' && 'tasks-list__task-button_active')}
