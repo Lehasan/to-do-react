@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
-import { TbGridDots } from "react-icons/tb"
-import { MdDeleteSweep } from "react-icons/md"
-import { MdDownloadDone } from "react-icons/md"
+import { RxDragHandleDots2 } from 'react-icons/rx'
+import { MdDeleteSweep } from 'react-icons/md'
+import { MdDownloadDone } from 'react-icons/md'
 import './ToDoOptions.scss'
 
 const ToDoOptions = ({ tasksStorage }) => {
 	const handleRemoveTasks = () => tasksStorage.item.length && tasksStorage.setItem([])
 
 	const handleRemoveCompletedTasks = () => {
-		tasksStorage.item.find(item => {
-			item.status === 'completed' && tasksStorage.setItem(
-				tasksStorage.item.filter(item => item.status !== 'completed')
+		tasksStorage.item.forEach(taskItem => {
+			taskItem.isCompleted && tasksStorage.setItem(
+				tasksStorage.item.filter(taskItem => !taskItem.isCompleted)
 			)
 		})
 	}
@@ -18,7 +18,7 @@ const ToDoOptions = ({ tasksStorage }) => {
 	return (
 		<div className="to-do-options">
 			<button type="button" className="to-do-options__dots-button">
-				<TbGridDots className="to-do-options__dots-icon" />
+				<RxDragHandleDots2 className="to-do-options__dots-icon" />
 			</button>
 			<ul className="to-do-options__list">
 				<li className="to-do-options__item">

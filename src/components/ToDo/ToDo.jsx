@@ -1,11 +1,27 @@
+import { useState } from 'react'
 import { useLocalStorage } from '@/hooks/useLocalStorage'
+import ToDoOptions from './ToDoOptions/ToDoOptions'
+import ToDoForm from './ToDoForm/ToDoForm'
+import ToDoTabs from './ToDoTabs/ToDoTabs'
 import ToDoList from './ToDoList/ToDoList'
-import ToDoForm from "./ToDoForm/ToDoForm"
-import ToDoOptions from "./ToDoOptions/ToDoOptions"
 import './ToDo.scss'
 
 const ToDo = () => {
-	const tasksStorage = useLocalStorage('tasks', [])
+	const tasksStorage = useLocalStorage('tasks', [
+		{
+			id: '1',
+			text: 'Task',
+			isCompleted: false
+		},
+		{
+			id: '2',
+			text: 'Completed task',
+			isCompleted: true
+		}
+	])
+
+	const [tabValue, setTabValue] = useState('')
+	const getTabValue = value => setTabValue(value)
 
 	return (
 		<div className='to-do'>
@@ -14,7 +30,8 @@ const ToDo = () => {
 				<ToDoOptions tasksStorage={tasksStorage} />
 			</div>
 			<ToDoForm tasksStorage={tasksStorage} />
-			<ToDoList tasksStorage={tasksStorage} />
+			<ToDoTabs getTabValue={getTabValue} />
+			<ToDoList tasksStorage={tasksStorage} tabValue={tabValue} />
 		</div >
 	)
 }

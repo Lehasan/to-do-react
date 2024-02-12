@@ -1,6 +1,6 @@
 .tasks-list {
 	overflow-y: auto;
-	max-height: 300px;
+	max-height: 276px;
 	scrollbar-gutter: stable;
 
 	&__item {
@@ -14,6 +14,10 @@
 
 		&:not(:last-child) {
 			margin-bottom: 10px;
+		}
+
+		&.tasks-list__item_hidden {
+			display: none;
 		}
 	}
 

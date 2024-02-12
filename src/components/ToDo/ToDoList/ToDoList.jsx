@@ -1,25 +1,26 @@
 import PropTypes from 'prop-types'
 import { classNames } from '@/utils/classNames'
-import { FaRegTrashCan } from "react-icons/fa6"
+import { FaRegTrashCan } from 'react-icons/fa6'
 import './ToDoList.scss'
 
-const ToDoList = ({ tasksStorage }) => {
+const ToDoList = ({ tasksStorage, tabValue }) => {
 	const handleActiveTask = event => {
-		const tasksArray = []
+		const tasksArray = [...tasksStorage.item]
 
-		tasksStorage.item.find(item => {
-			if (item.id === event.currentTarget.dataset.taskId) {
-				item.status = item.status === 'completed' ? 'pending' : 'completed'
-
-				tasksArray.push(...tasksStorage.item)
-				tasksStorage.setItem(tasksArray)
+		tasksArray.find(taskItem => {
+			if (taskItem.id === event.currentTarget.dataset.taskId) {
+				taskItem.isCompleted = !taskItem.isCompleted
 			}
 		})
+
+		tasksStorage.setItem(tasksArray)
 	}
 
 	const handleRemoveTask = event => {
 		tasksStorage.setItem(
-			tasksStorage.item.filter(item => item.id !== event.currentTarget.dataset.taskId)
+			tasksStorage.item.filter(
+				taskItem => taskItem.id !== event.currentTarget.dataset.taskId
+			)
 		)
 	}
 
@@ -28,10 +29,16 @@ const ToDoList = ({ tasksStorage }) => {
 			{tasksStorage.item.length ?
 				<ul className="tasks-list">
 					{tasksStorage.item.map(taskItem => (
-						<li key={taskItem.id} className="tasks-list__item">
+						<li key={taskItem.id} className={classNames(
+							'tasks-list__item',
+							!taskItem.isCompleted && tabValue !== 'all' && 'tasks-list__item_hidden'
+						)}>
 							<button
 								type="button"
-								className={classNames('tasks-list__task-button', taskItem.status === 'completed' && 'tasks-list__task-button_active')}
+								className={classNames(
+									'tasks-list__task-button',
+									taskItem.isCompleted && 'tasks-list__task-button_active'
+								)}
 								data-task-id={taskItem.id}
 								onClick={handleActiveTask}
 							>
@@ -54,7 +61,8 @@ const ToDoList = ({ tasksStorage }) => {
 }
 
 ToDoList.propTypes = {
-	tasksStorage: PropTypes.object
+	tasksStorage: PropTypes.object,
+	tabValue: PropTypes.string
 }
 
 export default ToDoList

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useInput } from '@/hooks/useInput'
 import { generateValue } from '@/utils/generateValue'
-import { BsPlusCircleFill } from "react-icons/bs"
+import { BsPlusCircleFill } from 'react-icons/bs'
 import './ToDoForm.scss'
 
 const ToDoForm = ({ tasksStorage }) => {
@@ -13,16 +13,17 @@ const ToDoForm = ({ tasksStorage }) => {
 		if (!taskInput.value.trim()) return
 
 		tasksStorage.setItem(prevTasks => [{
-			id: generateValue(),
+			id: generateValue(3),
 			text: taskInput.value,
-			status: 'pending'
+			isCompleted: false
 		}, ...prevTasks])
+
 		taskInput.reset()
 	}
 
 	return (
 		<form className="to-do-form">
-			<input type="text" className="to-do-form__input" placeholder="Add New Task" {...taskInput.bind} />
+			<input type="text" className="to-do-form__input" placeholder="Add new task" {...taskInput.bind} />
 			<button className="to-do-form__add-button" onClick={handleAddTask}>
 				<BsPlusCircleFill className="to-do-form__add-icon" />
 			</button>
